@@ -19,44 +19,44 @@ def average_and_save_netcdf(file1, file2, output_file):
     
 #####################################################################
     
-    CALC_7200_nt = nc1.variables['Information_AQ1_yz'][1, :, :, 2]
-    CALC_10800_nt = nc2.variables['Information_AQ1_yz'][2, :, :, 2]
+    CALC_time1_nt = nc1.variables['Information_AQ1_yz'][1, :, :, 2]
+    CALC_time2_nt = nc2.variables['Information_AQ1_yz'][2, :, :, 2]
  
-    CALC_7200_w = nc1.variables['w_yz'][1, :, :, 2]
-    CALC_10800_w = nc2.variables['w_yz'][2, :, :, 2] 
+    CALC_time1_w = nc1.variables['w_yz'][1, :, :, 2]
+    CALC_time2_w = nc2.variables['w_yz'][2, :, :, 2] 
     
-    CALC_7200_v = nc1.variables['v_yz'][1, :, :, 2]
-    CALC_10800_v = nc2.variables['v_yz'][2, :, :, 2] 
+    CALC_time1_v = nc1.variables['v_yz'][1, :, :, 2]
+    CALC_time2_v = nc2.variables['v_yz'][2, :, :, 2] 
     
-    CALC_7200_u = nc1.variables['u_yz'][1, :, :, 2]
-    CALC_10800_u = nc2.variables['u_yz'][2, :, :, 2] 
+    CALC_time1_u = nc1.variables['u_yz'][1, :, :, 2]
+    CALC_time2_u = nc2.variables['u_yz'][2, :, :, 2] 
     
-    CALC_7200_AQ2 = nc1.variables['Information_AQ2_yz'][1, :, :, 2]
-    CALC_10800_AQ2 = nc2.variables['Information_AQ2_yz'][2, :, :, 2] 
+    CALC_time1_AQ2 = nc1.variables['Information_AQ2_yz'][1, :, :, 2]
+    CALC_time2_AQ2 = nc2.variables['Information_AQ2_yz'][2, :, :, 2] 
     
-    CALC_7200_AQ3 = nc1.variables['AQ3_yz'][1, :, :, 2]
-    CALC_10800_AQ3 = nc2.variables['AQ3_yz'][2, :, :, 2] 
+    CALC_time1_AQ3 = nc1.variables['AQ3_yz'][1, :, :, 2]
+    CALC_time2_AQ3 = nc2.variables['AQ3_yz'][2, :, :, 2] 
     
-    CALC_7200_AQ4 = nc1.variables['Information_AQ42.5_yz'][1, :, :, 2]
-    CALC_10800_AQ4 = nc2.variables['Information_AQ42.5_yz'][2, :, :, 2] 
+    CALC_time1_AQ4 = nc1.variables['Information_AQ42.5_yz'][1, :, :, 2]
+    CALC_time2_AQ4 = nc2.variables['Information_AQ42.5_yz'][2, :, :, 2] 
     
-    CALC_7200_AQ5 = nc1.variables['Information_N_AQ5_yz'][1, :, :, 2]
-    CALC_10800_AQ5 = nc2.variables['Information_N_AQ5_yz'][2, :, :, 2]
+    CALC_time1_AQ5 = nc1.variables['Information_N_AQ5_yz'][1, :, :, 2]
+    CALC_time2_AQ5 = nc2.variables['Information_N_AQ5_yz'][2, :, :, 2]
     
     
     # Calculate element-wise average
-    total_Alanysis_AQ1 = (CALC_7200_nt + CALC_10800_nt) / 2.0
-    total_Alanysis_w = (CALC_7200_w + CALC_10800_w) / 2.0
-    total_Alanysis_v = (CALC_7200_v + CALC_10800_v) / 2.0
-    total_Alanysis_u = (CALC_7200_u + CALC_10800_u) / 2.0
-    total_Alanysis_AQ2 = (CALC_7200_AQ2 + CALC_10800_AQ2) / 2.0
-    total_Alanysis_AQ3 = (CALC_7200_AQ3 + CALC_10800_AQ3)/2.0
-    total_Alanysis_AQ4 = (CALC_7200_AQ4 + CALC_10800_AQ4) / 2.0
-    total_Alanysis_AQ5 = (CALC_7200_AQ5 + CALC_10800_AQ5) / 2.0
+    total_Alanysis_AQ1 = (CALC_time1_nt + CALC_time2_nt) / 2.0
+    total_Alanysis_w = (CALC_time1_w + CALC_time2_w) / 2.0
+    total_Alanysis_v = (CALC_time1_v + CALC_time2_v) / 2.0
+    total_Alanysis_u = (CALC_time1_u + CALC_time2_u) / 2.0
+    total_Alanysis_AQ2 = (CALC_time1_AQ2 + CALC_time2_AQ2) / 2.0
+    total_Alanysis_AQ3 = (CALC_time1_AQ3 + CALC_time2_AQ3)/2.0
+    total_Alanysis_AQ4 = (CALC_time1_AQ4 + CALC_time2_AQ4) / 2.0
+    total_Alanysis_AQ5 = (CALC_time1_AQ5 + CALC_time2_AQ5) / 2.0
  
-    # Get dimensions from CALC_7200 (assuming they are the same for both arrays)
-    dim1 = CALC_7200_nt.shape[0]
-    dim2 = CALC_7200_nt.shape[1]
+    # Get dimensions from CALC_time1 (assuming they are the same for both arrays)
+    dim1 = CALC_time1_nt.shape[0]
+    dim2 = CALC_time1_nt.shape[1]
 
     # Create a new netCDF file for writing
     nc_out = Dataset(output_file, 'w', format='NETCDF4')
